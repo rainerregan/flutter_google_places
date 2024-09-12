@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_google_places/src/flutter_google_places.dart';
-import 'package:google_maps_webservice/places.dart';
+import 'package:google_maps_webservice_nullsafety/places.dart';
 
 /// A text field like widget to input places with autocomplete.
 ///
@@ -143,14 +143,12 @@ class PlacesAutocompleteField extends StatefulWidget {
   final TextStyle? textStyleFormField;
 
   @override
-  LocationAutocompleteFieldState createState() =>
-      LocationAutocompleteFieldState();
+  LocationAutocompleteFieldState createState() => LocationAutocompleteFieldState();
 }
 
 class LocationAutocompleteFieldState extends State<PlacesAutocompleteField> {
   TextEditingController? _controller;
-  TextEditingController? get _effectiveController =>
-      widget.controller ?? _controller;
+  TextEditingController? get _effectiveController => widget.controller ?? _controller;
 
   @override
   void initState() {
@@ -165,8 +163,7 @@ class LocationAutocompleteFieldState extends State<PlacesAutocompleteField> {
       widget.controller!.text = oldWidget.controller!.text;
     }
     if (widget.controller == null && oldWidget.controller != null) {
-      _controller =
-          TextEditingController.fromValue(oldWidget.controller!.value);
+      _controller = TextEditingController.fromValue(oldWidget.controller!.value);
     } else if (widget.controller != null && oldWidget.controller == null) {
       _controller = null;
     }
@@ -210,13 +207,11 @@ class LocationAutocompleteFieldState extends State<PlacesAutocompleteField> {
         ? Text(
             controller.text,
             softWrap: true,
-            style: widget.textStyleFormField ??
-                const TextStyle(color: Colors.black38),
+            style: widget.textStyleFormField ?? const TextStyle(color: Colors.black38),
           )
         : Text(
             widget.hint,
-            style: widget.textStyleFormField ??
-                const TextStyle(color: Colors.black38),
+            style: widget.textStyleFormField ?? const TextStyle(color: Colors.black38),
           );
 
     Widget child = Row(
